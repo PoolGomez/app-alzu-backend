@@ -34,7 +34,12 @@ app.use("/api/user-company", require("./routes/userCompanyRoute"));
 //Global Error Handler
 app.use(globalErrorHandler);
 
+const isDev = config.nodeEnv ==="development"
 //Server
-app.listen(PORT, ()=>{
-    console.log(`POS Server is listening on port ${PORT}`);
-})
+if(!isDev){
+    app.listen(PORT, ()=>{
+        console.log(`POS Server is listening on port ${PORT}`);
+    })
+ }else{
+     module.exports = app;
+}
