@@ -6,7 +6,7 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const app = express();
 
-const PORT = config.port;
+
 connectDB();
 
 //Middlewares
@@ -36,7 +36,8 @@ app.use(globalErrorHandler);
 
 const isDev = config.nodeEnv ==="development"
 //Server
-if(!isDev){
+if(isDev){
+    const PORT = config.port;
     app.listen(PORT, ()=>{
         console.log(`POS Server is listening on port ${PORT}`);
     })
